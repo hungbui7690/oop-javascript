@@ -1,32 +1,25 @@
 /*
-  GETTERS/SETTERS
+  Exercise:
+  - Design a Stopwatch which has:
+    + duration = 0
+    + start(), stop(), reset() 
+
 */
 
-function Circle(radius) {
-  let color = 'red'
-  this.radius = radius
+function StopWatch() {
+  this.duration = 0
 
-  this.draw = function () {
-    console.log('draw')
-  }
+  this.start = function () {}
 
-  Object.defineProperty(this, 'color', {
-    get: function () {
-      return color
-    },
+  this.stop = function () {}
 
-    // Setters
-    set: function (value) {
-      if (!value) throw new Error('value is empty')
-
-      color = value
-    },
-  })
+  this.reset = function () {}
 }
-const circle = new Circle(10)
-console.log(circle.color)
 
-// circle.color = '' // error
+const sw = new StopWatch()
+sw.start()
+sw.stop()
+sw.duration // 23.732
 
-circle.color = 'green'
-console.log(circle.color) // 'green'
+sw.reset()
+sw.duration // 0
