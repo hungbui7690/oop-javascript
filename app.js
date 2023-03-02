@@ -4,14 +4,22 @@
   - Objects are copied by their "reference"
 */
 
-// PRIMITIVES
-let x = 10
-let y = x // 2 independent variables
-x = 20
-console.log(x, y)
+let number = 10
 
-// REFERENCE TYPES > memory store location > actual data stores in heap
-let a = { value: 10 }
-let b = a
-b.value = 20
-console.log(a, b)
+function increase(number) {
+  number++
+}
+
+increase(number)
+console.log(number)
+
+////////////////////////////
+
+let object = { value: 10 }
+
+function increase(obj) {
+  obj.value++
+}
+
+increase(object)
+console.log(object)
