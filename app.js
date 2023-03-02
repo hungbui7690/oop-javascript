@@ -1,21 +1,8 @@
 /*
-  FACTORY FUNCTIONS
+  Constructor Function
 
 */
 
-// Object Literals
-const circle = {
-  radius: 1,
-  location: {
-    x: 1,
-    y: 1,
-  },
-  draw: function () {
-    console.log('draw')
-  },
-}
-
-/////////////////////////////////
 // Factories
 function createCircle(radius) {
   return {
@@ -25,6 +12,24 @@ function createCircle(radius) {
     },
   }
 }
-
 const circleX = createCircle(1)
-circleX.draw()
+
+/////////////////////////////////
+
+// Constructor: this + no "return" + use "new"
+function CircleY(radius) {
+  console.log(this)
+  this.radius = radius
+  this.draw = function () {
+    console.log('draw')
+  }
+}
+
+// this = CircleY {}
+const circleY = new CircleY(1)
+
+// global "this" = Window
+console.log('=> Global "this"', this)
+
+// Window
+const circleZ = CircleY(1) // without new keyword > this = global object > radius & draw() will be added to window object
