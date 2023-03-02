@@ -1,30 +1,17 @@
 /*
-  FUNCTION ARE OBJECTS
-
+  VALUES VS REFERENCE TYPE
+  - Primitives are copied by their "values" 
+  - Objects are copied by their "reference"
 */
 
-function Circle(radius) {
-  this.radius = radius
-  this.draw = function () {
-    console.log('draw')
-  }
-}
+// PRIMITIVES
+let x = 10
+let y = x // 2 independent variables
+x = 20
+console.log(x, y)
 
-// alternative way to create an instance
-const circleA = {}
-Circle.call(circleA, 2)
-console.log(circleA)
-
-const another = new Circle(2)
-console.log(another)
-
-///////////////////////////////
-
-// without new keyword > it will look like this > check window object, we will see draw() & radius=2
-const circleB = Circle.call(window, 2)
-
-///////////////////////////////
-
-// call() vs apply
-Circle.call({}, 1)
-Circle.apply({}, [1, 2, 3])
+// REFERENCE TYPES > memory store location > actual data stores in heap
+let a = { value: 10 }
+let b = a
+b.value = 20
+console.log(a, b)
