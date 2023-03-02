@@ -1,25 +1,25 @@
 /*
-  VALUES VS REFERENCE TYPE
-  - Primitives are copied by their "values" 
-  - Objects are copied by their "reference"
+  ADD/REMOVE PROPERTIES
+
+    Why it is useful? 
+    > for example, a web app send user object to server > server can add token property on the fly then return that object back right away
+    > in C# or Java, if we want to do something like this, we have to implement our class again
+
 */
 
-let number = 10
-
-function increase(number) {
-  number++
+function Circle(radius) {
+  this.radius = radius
+  this.draw = function () {
+    console.log('draw')
+  }
 }
+const circle = new Circle(10)
 
-increase(number)
-console.log(number)
+// Add Properties
+circle.location = { x: 1 }
+circle['offset'] = 100
+console.log(circle)
 
-////////////////////////////
-
-let object = { value: 10 }
-
-function increase(obj) {
-  obj.value++
-}
-
-increase(object)
-console.log(object)
+// Delete a Property
+delete circle.offset
+console.log(circle)
