@@ -10,23 +10,21 @@ function Circle(radius) {
   }
 }
 
-// functions are object > have properties & methods
-console.log(Circle.name)
-console.log(Circle.length)
+// alternative way to create an instance
+const circleA = {}
+Circle.call(circleA, 2)
+console.log(circleA)
 
-/////////////////////////////////////////////////////
+const another = new Circle(2)
+console.log(another)
 
-// constructor
-console.log(Circle.constructor)
-// behind the scene
-const CircleX = new Function(
-  'radius',
-  `
-  this.radius = radius
-    this.draw = function () {
-      console.log('draw')
-    }
-  `
-)
-const circleX = new CircleX(1) // we can create object from this function
-console.log(circleX)
+///////////////////////////////
+
+// without new keyword > it will look like this > check window object, we will see draw() & radius=2
+const circleB = Circle.call(window, 2)
+
+///////////////////////////////
+
+// call() vs apply
+Circle.call({}, 1)
+Circle.apply({}, [1, 2, 3])
