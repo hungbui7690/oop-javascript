@@ -7,19 +7,38 @@
 */
 
 function StopWatch() {
-  this.duration = 0
+  let startTime,
+    endTime,
+    running = false,
+    duration = 0
 
-  this.start = function () {}
+  this.start = function () {
+    if (running) throw new Error('Stopwatch has already started')
 
-  this.stop = function () {}
+    running = true
+    startTime = new Date()
+  }
 
-  this.reset = function () {}
+  this.stop = function () {
+    if (!running) throw new Error('Stopwatch has already stopped')
+
+    running = false
+    endTime = new Date()
+    duration = (endTime - startTime) / 1000
+  }
+
+  this.reset = function () {
+    duration = 0
+    startTime = null
+    endTime = null
+    running = false
+  }
+
+  Object.defineProperty(this, 'duration', {
+    get: function () {
+      return duration
+    },
+  })
 }
 
 const sw = new StopWatch()
-sw.start()
-sw.stop()
-sw.duration // 23.732
-
-sw.reset()
-sw.duration // 0
