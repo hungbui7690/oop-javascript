@@ -1,35 +1,32 @@
 /*
-  Constructor Function
+  FUNCTION ARE OBJECTS
 
 */
 
-// Factories
-function createCircle(radius) {
-  return {
-    radius: 1,
-    draw: function () {
-      console.log('draw')
-    },
-  }
-}
-const circleX = createCircle(1)
-
-/////////////////////////////////
-
-// Constructor: this + no "return" + use "new"
-function CircleY(radius) {
-  console.log(this)
+function Circle(radius) {
   this.radius = radius
   this.draw = function () {
     console.log('draw')
   }
 }
 
-// this = CircleY {}
-const circleY = new CircleY(1)
+// functions are object > have properties & methods
+console.log(Circle.name)
+console.log(Circle.length)
 
-// global "this" = Window
-console.log('=> Global "this"', this)
+/////////////////////////////////////////////////////
 
-// Window
-const circleZ = CircleY(1) // without new keyword > this = global object > radius & draw() will be added to window object
+// constructor
+console.log(Circle.constructor)
+// behind the scene
+const CircleX = new Function(
+  'radius',
+  `
+  this.radius = radius
+    this.draw = function () {
+      console.log('draw')
+    }
+  `
+)
+const circleX = new CircleX(1) // we can create object from this function
+console.log(circleX)
