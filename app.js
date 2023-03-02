@@ -10,17 +10,23 @@ function Circle(radius) {
     console.log('draw')
   }
 
-  // this is the correct way to define getter/setter
   Object.defineProperty(this, 'color', {
     get: function () {
       return color
     },
+
+    // Setters
+    set: function (value) {
+      if (!value) throw new Error('value is empty')
+
+      color = value
+    },
   })
 }
 const circle = new Circle(10)
-
-// get the property
 console.log(circle.color)
 
+// circle.color = '' // error
+
 circle.color = 'green'
-console.log(circle.color) // change is not applied > still 'red'
+console.log(circle.color) // 'green'
