@@ -1,9 +1,8 @@
 /*
-  ADD/REMOVE PROPERTIES
-
-    Why it is useful? 
-    > for example, a web app send user object to server > server can add token property on the fly then return that object back right away
-    > in C# or Java, if we want to do something like this, we have to implement our class again
+  ENUMERATING PROPERTIES
+  - Iterating means repeating some steps > similar to looping
+  - enumerating means going through all values in a collection of values
+  - loop is a sequence of instruction s that is continually repeated until a certain condition is reached
 
 */
 
@@ -15,11 +14,23 @@ function Circle(radius) {
 }
 const circle = new Circle(10)
 
-// Add Properties
-circle.location = { x: 1 }
-circle['offset'] = 100
-console.log(circle)
+// Enumerating
+// typeof key = string/number, typeof circle[key] = number/function
+for (let key in circle) {
+  console.log(key, circle[key], typeof circle[key])
+}
 
-// Delete a Property
-delete circle.offset
-console.log(circle)
+// Convert keys to array
+const keys = Object.keys(circle)
+console.log(keys)
+
+// Convert keys to array
+const values = Object.values(circle)
+console.log(values)
+
+// Array of arrays
+const entries = Object.entries(circle)
+console.log(entries)
+
+// check if key exists in object or not
+if ('radius' in circle) console.log('Circle has a radius')
