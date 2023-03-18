@@ -1,14 +1,6 @@
 /*
-  Exercise P1
-  - create HtmlElement class (parent)
-    + click in HtmlElement
-    + focus in HtmlElement.prototype
-
-  - create HtmlSelectElement (child of HtmlElement)  
-    + These both functions will be in HtmlSelectElement
-      > addItem()
-      > removeItem()
-
+  Exercise #1 P2
+  - 
 */
 
 function HtmlElement() {
@@ -35,8 +27,8 @@ function HtmlSelectElement(items = []) {
   }
 }
 
-// (***) with this implementation, we don't see click() in HtmlSelectElement
-HtmlSelectElement.prototype = Object.create(HtmlElement.prototype)
+// (***) new HtmlElement() > because click() is in HtmlElement, but not in HtmlElement.prototype
+HtmlSelectElement.prototype = Object.create(new HtmlElement())
 HtmlSelectElement.prototype.constructor = HtmlSelectElement
 
 //////////////////////////////////
@@ -49,4 +41,6 @@ selectElement.add('2')
 selectElement.add('3')
 selectElement.remove('2')
 
-console.log(selectElement)
+// (***)
+selectElement.click()
+selectElement.focus()
