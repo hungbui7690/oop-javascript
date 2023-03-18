@@ -1,41 +1,52 @@
 /*
-  Mixins P4
-  - to make the code less noisy > use Mixins
+  Exercise P1
+  - create HtmlElement class (parent)
+    + click in HtmlElement
+    + focus in HtmlElement.prototype
+
+  - create HtmlSelectElement (child of HtmlElement)  
+    + These both functions will be in HtmlSelectElement
+      > addItem()
+      > removeItem()
 
 */
 
-const eat = {
-  eat: function () {
-    this.hunger++
-    console.log('Eating')
-  },
+function HtmlElement() {
+  this.click = function () {
+    console.log('click')
+  }
 }
 
-const walk = {
-  walk: function () {
-    console.log('Walking')
-  },
+HtmlElement.prototype.focus = function () {
+  console.log('focus')
 }
 
-const swim = {
-  swim: function () {
-    console.log('Swimming')
-  },
+////////////////////////////////
+
+function HtmlSelectElement(items = []) {
+  this.items = items
+
+  this.add = function (item) {
+    this.items.push(item)
+  }
+
+  this.remove = function (item) {
+    return this.items.splice(this.items.indexOf(item), 1)
+  }
 }
 
-/////////////////////////////////////
+// (***) with this implementation, we don't see click() in HtmlSelectElement
+HtmlSelectElement.prototype = Object.create(HtmlElement.prototype)
+HtmlSelectElement.prototype.constructor = HtmlSelectElement
 
-// (***)
-function mixin(target, ...sources) {
-  Object.assign(target, ...sources)
-}
+//////////////////////////////////
 
-function Person() {}
-mixin(Person.prototype, eat, walk)
+const element = new HtmlElement()
+const selectElement = new HtmlSelectElement()
 
-function Fish() {}
-mixin(Fish.prototype, eat, swim)
+selectElement.add('1')
+selectElement.add('2')
+selectElement.add('3')
+selectElement.remove('2')
 
-const person = new Person()
-const fish = new Fish()
-console.log(person, fish)
+console.log(selectElement)
