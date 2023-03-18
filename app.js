@@ -1,6 +1,6 @@
 /*
-  Polymorphism P1
-  - we can see the duplicate() has many forms > why do we need this?? > next lesson
+  Polymorphism P2
+  - 
 */
 
 function extend(Child, Parent) {
@@ -14,7 +14,6 @@ function Shape(color) {
   this.color = color
 }
 
-// (***)
 Shape.prototype.duplicate = function () {
   console.log('duplicate')
 }
@@ -29,7 +28,6 @@ function Circle(radius, color) {
 
 extend(Circle, Shape)
 
-// (***)
 Circle.prototype.duplicate = function () {
   console.log('Circle duplication')
 }
@@ -46,11 +44,16 @@ function Square(size) {
 
 extend(Square, Shape)
 
-// (***)
 Square.prototype.duplicate = function () {
   console.log('Square duplication')
 }
 
-const square = new Square(99)
-console.log(square)
-square.duplicate()
+/////////////////////////////////////////////
+// HERE
+/////////////////////////////////////////////
+
+const shapes = [new Circle(), new Square()]
+
+shapes.forEach((s) => {
+  s.duplicate() // this is the power of polymorphism
+})
