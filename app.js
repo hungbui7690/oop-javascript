@@ -1,9 +1,10 @@
 /*
-  "this" keyword P4
+  Private Properties using Symbol P1
   
 */
 
 class Circle {
+  // (***) with this implementation, "radius" is public
   constructor(radius) {
     this.radius = radius
   }
@@ -14,7 +15,5 @@ class Circle {
 }
 
 const circle = new Circle(10)
-
-// (***) with ES6, we don't need to use strict mode > auto for us
-const draw = circle.draw
-draw()
+circle.radius = 100 // (***) change radius easily
+console.log(circle) // {radius: 100}
