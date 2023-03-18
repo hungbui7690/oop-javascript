@@ -1,11 +1,22 @@
 /*
-  Prototypal Inheritance P3
-  - except the root object, every object has a prototype 
-    > prototype is just a regular object
+  Multi-Level Inheritance
 
 */
 
-let x = {}
-let y = {}
+let myArr = []
+console.log(myArr) // myArr > Array Object > Object Base
 
-console.log(x.toString())
+function Circle(radius) {
+  this.radius = radius
+
+  this.draw = function () {
+    console.log('draw')
+  }
+}
+
+// (***) objects that are created by a give constructor will have the same prototype
+const circle1 = new Circle(10)
+const circle2 = new Circle(5)
+
+console.log(circle1)
+console.log(circle2)
