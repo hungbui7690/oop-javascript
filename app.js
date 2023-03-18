@@ -1,7 +1,5 @@
 /*
-  Method Overriding P1
-  - sometimes, the duplicate() of the parent does not work with its children
-    > we need to override it
+  Method Overriding P2
 
 */
 
@@ -42,8 +40,8 @@ function Square(size) {
 
 extend(Square, Shape)
 
-// (***) this need to be place after extend() > this works because JS will use "lookup" when we call the function
 Square.prototype.duplicate = function () {
+  Shape.prototype.duplicate.call(this) // (***) call duplicate() from parent
   console.log('Square duplication')
 }
 
