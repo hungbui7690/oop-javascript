@@ -1,6 +1,6 @@
 /*
-  Method Overriding P2
-
+  Polymorphism P1
+  - we can see the duplicate() has many forms > why do we need this?? > next lesson
 */
 
 function extend(Child, Parent) {
@@ -14,6 +14,7 @@ function Shape(color) {
   this.color = color
 }
 
+// (***)
 Shape.prototype.duplicate = function () {
   console.log('duplicate')
 }
@@ -28,6 +29,11 @@ function Circle(radius, color) {
 
 extend(Circle, Shape)
 
+// (***)
+Circle.prototype.duplicate = function () {
+  console.log('Circle duplication')
+}
+
 Circle.prototype.draw = function () {
   console.log('draw')
 }
@@ -40,8 +46,8 @@ function Square(size) {
 
 extend(Square, Shape)
 
+// (***)
 Square.prototype.duplicate = function () {
-  Shape.prototype.duplicate.call(this) // (***) call duplicate() from parent
   console.log('Square duplication')
 }
 
