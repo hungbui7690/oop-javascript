@@ -1,30 +1,30 @@
 /*
-  Private Properties using WeakMap P4
+  Private Properties using WeakMap P5
   + Method 3: WeakMap()
 
 */
 
-const _radius = new WeakMap()
-
-const _move = new WeakMap()
+// (***) we can also use only 1 WeakMap
+const privateProps = new WeakMap()
 
 class Circle {
   constructor(radius) {
-    _radius.set(this, radius)
-
-    // (***) use arrow function to solve this
-    _move.set(this, () => {
-      console.log('move', this)
+    // (***)
+    privateProps.set(this, {
+      radius,
+      move: () => {
+        console.log('move', this)
+      },
     })
   }
 
   log() {
-    _move.get(this)() // (***)
-    console.log(_radius.get(this))
+    privateProps.get(this).move() // (***)
+    console.log(privateProps.get(this).radius) // (***)
   }
 }
 
 const circle = new Circle(10)
 console.log(circle)
 
-circle.log() // (***)
+circle.log()
