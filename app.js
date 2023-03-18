@@ -1,26 +1,18 @@
 /*
-  Private Properties using Symbol P6
-  + Method 2: use Symbol()
-
+  Private Properties using WeakMap P1
+  + Method 3: WeakMap()
 
 */
 
-const _radius = Symbol()
-
-// (***) create private method with Symbol()
-const _draw = Symbol()
+// (***)
+const _radius = new WeakMap()
 
 class Circle {
   constructor(radius) {
     this[_radius] = radius
   }
-
-  // (***)
-  [_draw]() {
-    console.log(this[_radius])
-  }
 }
 
 const circle = new Circle(10)
+circle._radius++ // with this, we create a new property
 console.log(circle)
-// circle._draw() // (***) err
