@@ -1,9 +1,10 @@
 /*
-  Intermediate Function Inheritance P2
-  - the extend() is called Intermediate Function   
+  Method Overriding P1
+  - sometimes, the duplicate() of the parent does not work with its children
+    > we need to override it
+
 */
 
-// (***) put into a function to reduce noisy
 function extend(Child, Parent) {
   Child.prototype = Object.create(Parent.prototype)
   Child.prototype.constructor = Child
@@ -27,7 +28,6 @@ function Circle(radius, color) {
   this.radius = radius
 }
 
-// (***)
 extend(Circle, Shape)
 
 Circle.prototype.draw = function () {
@@ -40,8 +40,12 @@ function Square(size) {
   this.size = size
 }
 
-// (***)
 extend(Square, Shape)
+
+// (***) this need to be place after extend() > this works because JS will use "lookup" when we call the function
+Square.prototype.duplicate = function () {
+  console.log('Square duplication')
+}
 
 const square = new Square(99)
 console.log(square)
