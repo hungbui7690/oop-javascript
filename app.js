@@ -1,7 +1,7 @@
 /*
-  Static Methods P1
-  - not tied to any object, but tied to the class
-
+  Static Methods P2
+  - we use static methods to create utility functions that tied to that class
+    > Ex: Math.ceil()
 
 */
 
@@ -19,12 +19,12 @@ class Circle {
   }
 
   // (***)
-  static parse() {
-    console.log('parse')
+  static parse(str) {
+    const obj = JSON.parse(str)
+    const radius = obj.radius
+    return new Circle(radius)
   }
 }
 
-const circle = new Circle(10)
-console.log(circle) // (***) if we check, we don't see parse() in the instance
-
-Circle.parse() // (***)
+// (***) need to have double quotes in property name
+console.log(Circle.parse('{"radius": 999}'))
