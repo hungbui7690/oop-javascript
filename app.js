@@ -1,18 +1,18 @@
 /*
-  Property Attributes P3
+  Property Attributes P4
 
 */
 
 let person = { name: 'Joe' }
 
-let ObjectBase = Object.getPrototypeOf(person)
-let descriptor = Object.getOwnPropertyDescriptor(ObjectBase, 'toString')
-
-// (***)
 Object.defineProperty(person, 'name', {
-  writable: false, // make the property name un-editable
+  writable: false,
+  enumerable: false, // (***) cannot iterate
 })
 
+// (***) return nothing
+for (const key in person) console.log(key)
+
 // (***)
-person.name = 'Nick'
-console.log(person) // {name: 'Joe'}
+const keys = Object.keys(person)
+console.log(keys) // []
