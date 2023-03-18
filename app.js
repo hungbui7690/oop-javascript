@@ -1,9 +1,8 @@
 /*
-  Prototype vs Instance Members P1
+  Prototype vs Instance Members P2
   
 */
 
-// Circle has 2 members
 function Circle(radius) {
   this.radius = radius
 
@@ -12,6 +11,14 @@ function Circle(radius) {
   }
 }
 
-// (***) when we check, we will see each object has draw() method > if we have 1000 copies object, we will have 1000 copies of draw() method > next lesson
-const circle1 = new Circle(10)
-const circle2 = new Circle(20)
+// (***) to solve the problem in previous lecture, we need to use prototype
+Circle.prototype.move = function () {
+  console.log('move')
+}
+
+// (***) check prototype of this object > we will see move()
+const circle = new Circle(10)
+console.log(circle)
+
+// (***)
+console.log(Circle.prototype === circle.__proto__) // true
