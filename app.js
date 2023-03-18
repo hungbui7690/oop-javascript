@@ -1,5 +1,5 @@
 /*
-  Prototype vs Instance Members P6
+  Prototype vs Instance Members P7
   
 */
 
@@ -18,10 +18,7 @@ Circle.prototype.move = function () {
 const circle = new Circle(10)
 circle.move()
 
-// (***) if we use Object.keys() > it does not show move() in prototype
-console.log(Object.keys(circle)) // ['radius', 'draw']
-
-// (***) for-in will show the method in prototype > show instance + prototype members
-for (const key in circle) {
-  console.log(key)
-}
+// (***) hasOwnProperty() return instance members > that's why in some document: instance property === own property
+console.log(circle.hasOwnProperty('radius')) // true
+console.log(circle.hasOwnProperty('draw')) // true
+console.log(circle.hasOwnProperty('move')) // false
