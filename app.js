@@ -1,18 +1,15 @@
 /*
-  Static Methods P3
+  "this" keyword P1
   
 */
 
-class Math2 {
-  constructor(value) {
-    this.value = value
-  }
+const Circle = function (radius) {
+  this.radius = radius
 
-  // (***)
-  static double(value) {
-    return value * 2
+  this.draw = function () {
+    console.log(this) // "this" points to Circle
   }
 }
 
-// (***)
-console.log(Math2.double(4))
+const circle = new Circle(10)
+console.log(circle) // Circle {radius: 10, draw: ƒ}
