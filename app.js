@@ -1,13 +1,9 @@
 /*
-  Hoisting & Class Expression
-  - class is NOT HOISTED > if we create object b4 class definition > err
+  Static Methods P1
+  - not tied to any object, but tied to the class
 
-  
-  (***) class expression is never used in the real world
+
 */
-
-const circle = new Circle(10)
-console.log(circle)
 
 class Circle {
   constructor(radius) {
@@ -21,7 +17,14 @@ class Circle {
   draw() {
     console.log('draw')
   }
+
+  // (***)
+  static parse() {
+    console.log('parse')
+  }
 }
 
-// (***) class expression
-const Square = class {}
+const circle = new Circle(10)
+console.log(circle) // (***) if we check, we don't see parse() in the instance
+
+Circle.parse() // (***)
