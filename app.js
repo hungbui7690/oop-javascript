@@ -1,59 +1,21 @@
 /*
-  Polymorphism P3
-  - 
+  When to Use Inheritance P1
+  - we should use this in large project 
+  - don't use inheritance in small project 
+    > use composition instead  
 */
 
-function extend(Child, Parent) {
-  Child.prototype = Object.create(Parent.prototype)
-  Child.prototype.constructor = Child
+// (***) base
+function Animal() {
+  this.eat = function () {}
+
+  this.walk = function () {}
 }
 
-///////////////////////////////////////////
+// (***) children extends Animal
+function Person() {}
 
-function Shape(color) {
-  this.color = color
-}
+function Dog() {}
 
-Shape.prototype.duplicate = function () {
-  console.log('duplicate')
-}
-
-////////////////////////////////////////////
-
-function Circle(radius, color) {
-  Shape.call(this, color)
-
-  this.radius = radius
-}
-
-extend(Circle, Shape)
-
-Circle.prototype.duplicate = function () {
-  console.log('Circle duplication')
-}
-
-Circle.prototype.draw = function () {
-  console.log('draw')
-}
-
-////////////////////////////////////////////
-
-function Square(size) {
-  this.size = size
-}
-
-extend(Square, Shape)
-
-Square.prototype.duplicate = function () {
-  console.log('Square duplication')
-}
-
-/////////////////////////////////////////////
-// If we don't use OOP, it will look like this
-/////////////////////////////////////////////
-const shapes = [new Circle(), new Square()]
-
-for (let s of shapes) {
-  if (s.type === 'circle') duplicateCircle()
-  if (s.type === 'square') duplicateSquare()
-}
+// (***) later, we can see that GoldFish does not know how to walk > so, it does not work in this case
+function GoldFish() {}
