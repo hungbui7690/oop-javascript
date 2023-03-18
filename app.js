@@ -1,7 +1,10 @@
 /*
-  "this" keyword P2
+  "this" keyword P3
   
 */
+
+// (***) strict mode > change the behavior of "this" keyword
+'use strict'
 
 const Circle = function (radius) {
   this.radius = radius
@@ -10,10 +13,7 @@ const Circle = function (radius) {
     console.log(this)
   }
 }
-
 const circle = new Circle(10)
-circle.draw() // method call
 
-// (***)
 const draw = circle.draw
-draw() // function call > window object
+draw() // (***) undefined (because JS engine does not want us to accidentally modify the global object) > without strict mode > return window object
