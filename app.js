@@ -1,5 +1,5 @@
 /*
-  Polymorphism P2
+  Polymorphism P3
   - 
 */
 
@@ -49,11 +49,11 @@ Square.prototype.duplicate = function () {
 }
 
 /////////////////////////////////////////////
-// HERE
+// If we don't use OOP, it will look like this
 /////////////////////////////////////////////
-
 const shapes = [new Circle(), new Square()]
 
-shapes.forEach((s) => {
-  s.duplicate() // this is the power of polymorphism
-})
+for (let s of shapes) {
+  if (s.type === 'circle') duplicateCircle()
+  if (s.type === 'square') duplicateSquare()
+}
