@@ -1,6 +1,5 @@
 /*
-  Mixins P1
-  - we use mixins to achieve composition
+  Mixins P2
 
 */
 
@@ -17,6 +16,12 @@ const walk = {
   },
 }
 
-// (***) this is the case when we use normal object
-const person = Object.assign({}, eat, walk)
+// (***) Person class
+function Person() {}
+
+// (***)
+Object.assign(Person.prototype, eat, walk)
+
+// (***)
+const person = new Person()
 console.log(person)
