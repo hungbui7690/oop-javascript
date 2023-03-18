@@ -1,9 +1,6 @@
 /*
-  Constructor Prototypes P1
-  - 3 ways to get the prototype of an object:   
-    + Object.getPrototypeOf(person)
-    + person.__proto__
-    + Person.constructor
+  Constructor Prototypes P2
+  
 */
 
 function Circle(radius) {
@@ -12,7 +9,11 @@ function Circle(radius) {
 
 const circle = new Circle(10)
 
-// 3 lines below return same result
-console.log(Object.getPrototypeOf(circle))
-console.log(circle.__proto__)
-console.log(Circle.prototype)
+// (***) object literal
+const obj1 = {} // under the hood, it will use new Object()
+const obj2 = new Object()
+console.log(obj1, obj2)
+
+// (***) same
+console.log(Object.getPrototypeOf(Object))
+console.log(Object.constructor)
