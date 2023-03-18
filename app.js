@@ -1,19 +1,20 @@
 /*
-  "this" keyword P3
+  "this" keyword P4
   
 */
 
-// (***) strict mode > change the behavior of "this" keyword
-'use strict'
+class Circle {
+  constructor(radius) {
+    this.radius = radius
+  }
 
-const Circle = function (radius) {
-  this.radius = radius
-
-  this.draw = function () {
+  draw() {
     console.log(this)
   }
 }
+
 const circle = new Circle(10)
 
+// (***) with ES6, we don't need to use strict mode > auto for us
 const draw = circle.draw
-draw() // (***) undefined (because JS engine does not want us to accidentally modify the global object) > without strict mode > return window object
+draw()
