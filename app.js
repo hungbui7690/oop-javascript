@@ -1,5 +1,5 @@
 /*
-  Constructor Prototypes P3
+  Constructor Prototypes P4
   
 */
 
@@ -8,14 +8,6 @@ function Circle(radius) {
 }
 
 const circle = new Circle(10)
+console.log(circle) // (***)
 
-// (***)
-const arr = []
-
-// (***)
-console.log(arr.__proto__)
-console.log(Object.getPrototypeOf(arr))
-
-// (***)
-console.log(Object.getPrototypeOf(Array))
-console.log(Array.constructor)
+console.log(Circle.prototype) // (***) this is the same as prototype of "circle" object
