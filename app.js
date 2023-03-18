@@ -1,13 +1,18 @@
 /*
-  ES6 Classes P3
+  Hoisting & Class Expression
+  - class is NOT HOISTED > if we create object b4 class definition > err
+
   
+  (***) class expression is never used in the real world
 */
+
+const circle = new Circle(10)
+console.log(circle)
 
 class Circle {
   constructor(radius) {
     this.radius = radius
 
-    // (***) if we want method to be in Circle, but not in prototype > put in constructor
     this.move = function () {
       console.log('move')
     }
@@ -18,6 +23,5 @@ class Circle {
   }
 }
 
-// (***) with ES6 classes, if we don't have "new" keyword > err (unlike we use ES5 constructor function, add to window object)
-const circle = new Circle(10)
-console.log(circle)
+// (***) class expression
+const Square = class {}
