@@ -1,5 +1,6 @@
 /*
-  Mixins P3
+  Mixins P4
+  - to make the code less noisy > use Mixins
 
 */
 
@@ -16,25 +17,25 @@ const walk = {
   },
 }
 
-function Person() {}
-
-Object.assign(Person.prototype, eat, walk)
-
-const person = new Person()
-console.log(person)
-
-///////////////////////////////////
-
-// (***)
 const swim = {
   swim: function () {
     console.log('Swimming')
   },
 }
 
-function GoldFish() {}
+/////////////////////////////////////
 
-Object.assign(GoldFish.prototype, eat, swim)
+// (***)
+function mixin(target, ...sources) {
+  Object.assign(target, ...sources)
+}
 
-const goldFish = new GoldFish()
-console.log(goldFish)
+function Person() {}
+mixin(Person.prototype, eat, walk)
+
+function Fish() {}
+mixin(Fish.prototype, eat, swim)
+
+const person = new Person()
+const fish = new Fish()
+console.log(person, fish)
