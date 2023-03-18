@@ -1,21 +1,29 @@
 /*
-  When to Use Inheritance P1
-  - we should use this in large project 
-  - don't use inheritance in small project 
-    > use composition instead  
+  When to Use Inheritance P2
+  - avoid creating inheritance hierarchies
+  - favor composition over inheritance > next lecture
+
 */
 
-// (***) base
+// (***) we need to remove walk() from Animal
 function Animal() {
   this.eat = function () {}
+}
 
+/////////////////////////////////////
+
+// (***) and use walk here
+function Mammal() {
   this.walk = function () {}
 }
 
-// (***) children extends Animal
+// extend Mammal
 function Person() {}
-
 function Dog() {}
 
-// (***) later, we can see that GoldFish does not know how to walk > so, it does not work in this case
-function GoldFish() {}
+//////////////////////////////////////
+
+// (***) we can see that when we add a new thing, we need to change the hierarchy
+function GoldFish() {
+  this.swim = function () {}
+}
