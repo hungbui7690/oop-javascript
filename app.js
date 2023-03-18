@@ -1,29 +1,22 @@
 /*
-  When to Use Inheritance P2
-  - avoid creating inheritance hierarchies
-  - favor composition over inheritance > next lecture
+  Mixins P1
+  - we use mixins to achieve composition
 
 */
 
-// (***) we need to remove walk() from Animal
-function Animal() {
-  this.eat = function () {}
+const eat = {
+  eat: function () {
+    this.hunger++
+    console.log('Eating')
+  },
 }
 
-/////////////////////////////////////
-
-// (***) and use walk here
-function Mammal() {
-  this.walk = function () {}
+const walk = {
+  walk: function () {
+    console.log('Walking')
+  },
 }
 
-// extend Mammal
-function Person() {}
-function Dog() {}
-
-//////////////////////////////////////
-
-// (***) we can see that when we add a new thing, we need to change the hierarchy
-function GoldFish() {
-  this.swim = function () {}
-}
+// (***) this is the case when we use normal object
+const person = Object.assign({}, eat, walk)
+console.log(person)
