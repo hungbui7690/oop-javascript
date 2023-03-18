@@ -1,12 +1,11 @@
 /*
-  Prototypal Inheritance P2
+  Prototypal Inheritance P3
+  - except the root object, every object has a prototype 
+    > prototype is just a regular object
 
 */
 
 let x = {}
-
 let y = {}
 
-console.log(Object.getPrototypeOf(x) === Object.getPrototypeOf(y)) // true > both x & y extends the same Object Base
-
-console.log(x.__proto__ === y.__proto__) // true > don't use this > deprecated
+console.log(x.toString())
