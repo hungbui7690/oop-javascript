@@ -1,7 +1,15 @@
 /*
-  Intermediate Function Inheritance P1
-
+  Intermediate Function Inheritance P2
+  - the extend() is called Intermediate Function   
 */
+
+// (***) put into a function to reduce noisy
+function extend(Child, Parent) {
+  Child.prototype = Object.create(Parent.prototype)
+  Child.prototype.constructor = Child
+}
+
+///////////////////////////////////////////
 
 function Shape(color) {
   this.color = color
@@ -19,9 +27,8 @@ function Circle(radius, color) {
   this.radius = radius
 }
 
-Circle.prototype = Object.create(Shape.prototype)
-
-Circle.prototype.constructor = Circle
+// (***)
+extend(Circle, Shape)
 
 Circle.prototype.draw = function () {
   console.log('draw')
@@ -29,16 +36,13 @@ Circle.prototype.draw = function () {
 
 ////////////////////////////////////////////
 
-// (***)
 function Square(size) {
   this.size = size
 }
 
-// (***) we can see that every time we use inheritance, we need to use these 2 lines > code becomes so noisy
-Square.prototype = Object.create(Shape.prototype)
-Square.prototype.constructor = Square // reset constructor
-
 // (***)
+extend(Square, Shape)
+
 const square = new Square(99)
 console.log(square)
 square.duplicate()
