@@ -1,5 +1,5 @@
 /*
-  Resetting the Constructor P1
+  Resetting the Constructor P2
 
 */
 
@@ -19,5 +19,9 @@ Circle.prototype.draw = function () {
   console.log('draw')
 }
 
-const c = new Circle(10)
-console.log(c) // (***) check prototype > we can see constructor()
+const c1 = new Circle(10)
+console.log(c1)
+
+// (***) this is similar to the one above
+const c2 = new Circle.prototype.constructor(100)
+console.log(c2)
