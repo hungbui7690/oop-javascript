@@ -1,5 +1,5 @@
 /*
-  Resetting the Constructor P3
+  Resetting the Constructor P4
 
 */
 
@@ -12,16 +12,18 @@ function Circle(radius) {
   this.radius = radius
 }
 
-// (***) uncomment
+// (***) reason is here
 Circle.prototype = Object.create(Shape.prototype)
+
+// (***) so that, we have to reset the constructor back to Circle object > then everything will be ok
+Circle.prototype.constructor = Circle
 
 Circle.prototype.draw = function () {
   console.log('draw')
 }
 
-// (***) after uncommenting the inheritance line, we don't see the Circle constructor function, but we see the Shape constructor function
 const c1 = new Circle(10)
 console.log(c1)
 
-const c2 = new Circle.prototype.constructor(10) // if we use this > if will create a new Shape object
+const c2 = new Circle.prototype.constructor(10)
 console.log(c2)
