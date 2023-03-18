@@ -1,24 +1,30 @@
 /*
-  Prototype vs Instance Members P2
+  Prototype vs Instance Members P3
   
 */
 
 function Circle(radius) {
   this.radius = radius
 
+  // Instance Member
   this.draw = function () {
     console.log('draw')
   }
 }
 
-// (***) to solve the problem in previous lecture, we need to use prototype
+// Prototype Member
 Circle.prototype.move = function () {
   console.log('move')
 }
 
-// (***) check prototype of this object > we will see move()
 const circle = new Circle(10)
 console.log(circle)
 
 // (***)
-console.log(Circle.prototype === circle.__proto__) // true
+console.log(circle.toString())
+
+// (***) override toString()
+Circle.prototype.toString = function () {
+  return `This Circle has radius of ${this.radius}`
+}
+console.log(circle.toString())
