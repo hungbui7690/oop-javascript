@@ -1,16 +1,18 @@
 /*
-  ES6 Classes P1
+  ES6 Classes P2
   
 */
 
-// b4 ES6
-function Circle(radius) {
-  this.radius = radius
+class Circle {
+  constructor(radius) {
+    this.radius = radius
+  }
 
-  this.draw = function () {
+  // (***)
+  draw() {
     console.log('draw')
   }
 }
 
 const circle = new Circle(10)
-console.log(circle)
+console.log(circle) // (***) we can see that draw() is in prototype
