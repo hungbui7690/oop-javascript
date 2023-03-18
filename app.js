@@ -1,15 +1,13 @@
 /*
-  Property Attributes P1
+  Property Attributes P2
 
 */
 
 let person = { name: 'Joe' }
-console.log(person)
-console.log(person.toString()) // [object Object]
 
-for (const key in person) {
-  console.log(key) // name
-}
+// (***) get prototype of person object
+let ObjectBase = Object.getPrototypeOf(person)
 
-const keys = Object.keys(person)
-console.log(keys) // ['name']
+// (***) see the descriptor of person object
+let descriptor = Object.getOwnPropertyDescriptor(ObjectBase, 'toString')
+console.log(descriptor)
