@@ -1,15 +1,18 @@
 /*
-  Property Attributes P5
-
+  Constructor Prototypes P1
+  - 3 ways to get the prototype of an object:   
+    + Object.getPrototypeOf(person)
+    + person.__proto__
+    + Person.constructor
 */
 
-let person = { name: 'Joe' }
+function Circle(radius) {
+  this.radius = radius
+}
 
-Object.defineProperty(person, 'name', {
-  writable: false,
-  enumerable: false,
-  configurable: true, // (***) make this property deletable
-})
+const circle = new Circle(10)
 
-delete person.name // delete property
-console.log(person) // {}
+// 3 lines below return same result
+console.log(Object.getPrototypeOf(circle))
+console.log(circle.__proto__)
+console.log(Circle.prototype)
