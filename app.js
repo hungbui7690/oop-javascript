@@ -1,5 +1,5 @@
 /*
-  "this" keyword P1
+  "this" keyword P2
   
 */
 
@@ -7,9 +7,13 @@ const Circle = function (radius) {
   this.radius = radius
 
   this.draw = function () {
-    console.log(this) // "this" points to Circle
+    console.log(this)
   }
 }
 
 const circle = new Circle(10)
-console.log(circle) // Circle {radius: 10, draw: ƒ}
+circle.draw() // method call
+
+// (***)
+const draw = circle.draw
+draw() // function call > window object
