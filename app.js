@@ -1,30 +1,18 @@
 /*
-  Static Methods P2
-  - we use static methods to create utility functions that tied to that class
-    > Ex: Math.ceil()
-
+  Static Methods P3
+  
 */
 
-class Circle {
-  constructor(radius) {
-    this.radius = radius
-
-    this.move = function () {
-      console.log('move')
-    }
-  }
-
-  draw() {
-    console.log('draw')
+class Math2 {
+  constructor(value) {
+    this.value = value
   }
 
   // (***)
-  static parse(str) {
-    const obj = JSON.parse(str)
-    const radius = obj.radius
-    return new Circle(radius)
+  static double(value) {
+    return value * 2
   }
 }
 
-// (***) need to have double quotes in property name
-console.log(Circle.parse('{"radius": 999}'))
+// (***)
+console.log(Math2.double(4))
