@@ -1,22 +1,15 @@
 /*
-  Multi-Level Inheritance
+  Property Attributes P1
 
 */
 
-let myArr = []
-console.log(myArr) // myArr > Array Object > Object Base
+let person = { name: 'Joe' }
+console.log(person)
+console.log(person.toString()) // [object Object]
 
-function Circle(radius) {
-  this.radius = radius
-
-  this.draw = function () {
-    console.log('draw')
-  }
+for (const key in person) {
+  console.log(key) // name
 }
 
-// (***) objects that are created by a give constructor will have the same prototype
-const circle1 = new Circle(10)
-const circle2 = new Circle(5)
-
-console.log(circle1)
-console.log(circle2)
+const keys = Object.keys(person)
+console.log(keys) // ['name']
