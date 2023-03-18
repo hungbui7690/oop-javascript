@@ -1,5 +1,5 @@
 /*
-  Private Properties using Symbol P4
+  Private Properties using Symbol P5
   + Method 2: use Symbol()
 
 
@@ -10,16 +10,21 @@ const _radius = Symbol()
 class Circle {
   constructor(radius) {
     this[_radius] = radius
-    // this._radius = radius // (***)  don't use this, otherwise, we still can change the original _radius
   }
 
   draw() {
-    console.log(this)
+    this[_radius]++
+    console.log(this[_radius])
   }
 }
 
 const circle = new Circle(10)
-// circle._radius = 10000 // though we change _radius here, we actually did't change the real _radius > when we do this here, we create new _radius property in the class
-console.log(circle)
 
-console.log(Object.getOwnPropertyNames(circle)) // []
+// (***) this is the hack to access it
+console.log(Object.getOwnPropertySymbols(circle))
+
+const key = Object.getOwnPropertySymbols(circle)[0]
+const radius = circle[key]
+console.log(radius) // though we can get the value > we cannot change it
+// radius++ // err
+console.log(circle)
