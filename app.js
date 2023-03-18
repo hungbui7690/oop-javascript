@@ -1,5 +1,5 @@
 /*
-  Constructor Prototypes P2
+  Constructor Prototypes P3
   
 */
 
@@ -9,11 +9,13 @@ function Circle(radius) {
 
 const circle = new Circle(10)
 
-// (***) object literal
-const obj1 = {} // under the hood, it will use new Object()
-const obj2 = new Object()
-console.log(obj1, obj2)
+// (***)
+const arr = []
 
-// (***) same
-console.log(Object.getPrototypeOf(Object))
-console.log(Object.constructor)
+// (***)
+console.log(arr.__proto__)
+console.log(Object.getPrototypeOf(arr))
+
+// (***)
+console.log(Object.getPrototypeOf(Array))
+console.log(Array.constructor)
