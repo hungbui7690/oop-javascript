@@ -1,13 +1,18 @@
 /*
-  Property Attributes P2
+  Property Attributes P3
 
 */
 
 let person = { name: 'Joe' }
 
-// (***) get prototype of person object
 let ObjectBase = Object.getPrototypeOf(person)
-
-// (***) see the descriptor of person object
 let descriptor = Object.getOwnPropertyDescriptor(ObjectBase, 'toString')
-console.log(descriptor)
+
+// (***)
+Object.defineProperty(person, 'name', {
+  writable: false, // make the property name un-editable
+})
+
+// (***)
+person.name = 'Nick'
+console.log(person) // {name: 'Joe'}
