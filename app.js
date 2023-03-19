@@ -1,10 +1,9 @@
 /*
-  Inheritance P2
+  Method Overriding P1
 
 */
 
 class Shape {
-  // (***) we add property to parent class
   constructor(color) {
     this.color = color
   }
@@ -15,19 +14,21 @@ class Shape {
 }
 
 class Circle extends Shape {
-  // (***)
   constructor(radius, color) {
-    super(color) // (***) must call super()
-
+    super(color)
     this.radius = radius
   }
 
   draw() {
     console.log('draw')
   }
+
+  // (***)
+  move() {
+    console.log('Circle Moves')
+  }
 }
 
 const circle = new Circle(10, 'red')
-console.log(circle)
-circle.draw()
+console.log(circle) // (***) check this
 circle.move()
