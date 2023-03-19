@@ -1,28 +1,26 @@
 /*
-  Getters & Setters P2
+  Inheritance P1
 
 */
 
-const _radius = new WeakMap()
-
-class Circle {
-  constructor(radius) {
-    _radius: _radius.set(this, radius)
-  }
-
-  getRadius() {
-    return _radius.get(this)
-  }
-
-  // (***)
-  setRadius(value) {
-    if (value <= 0) throw new Error('Invalid radius!!!')
-
-    _radius.set(this, value)
+class Shape {
+  move() {
+    console.log('move')
   }
 }
 
-const circle = new Circle(10)
+/////////////////////////////
 
-circle.setRadius(20) // (***)
-console.log(circle.getRadius())
+// (***) we use "extends" keyword
+class Circle extends Shape {
+  draw() {
+    console.log('draw')
+  }
+}
+
+/////////////////////////////
+
+const circle = new Circle()
+console.log(circle) // check this to see the structure
+circle.draw()
+circle.move()
