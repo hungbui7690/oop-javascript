@@ -1,26 +1,33 @@
 /*
-  Inheritance P1
+  Inheritance P2
 
 */
 
 class Shape {
+  // (***) we add property to parent class
+  constructor(color) {
+    this.color = color
+  }
+
   move() {
     console.log('move')
   }
 }
 
-/////////////////////////////
-
-// (***) we use "extends" keyword
 class Circle extends Shape {
+  // (***)
+  constructor(radius, color) {
+    super(color) // (***) must call super()
+
+    this.radius = radius
+  }
+
   draw() {
     console.log('draw')
   }
 }
 
-/////////////////////////////
-
-const circle = new Circle()
-console.log(circle) // check this to see the structure
+const circle = new Circle(10, 'red')
+console.log(circle)
 circle.draw()
 circle.move()
