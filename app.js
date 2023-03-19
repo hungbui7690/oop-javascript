@@ -1,30 +1,22 @@
 /*
-  Private Properties using WeakMap P5
-  + Method 3: WeakMap()
+  Getters & Setters P1
+  -
 
 */
 
-// (***) we can also use only 1 WeakMap
-const privateProps = new WeakMap()
+const _radius = new WeakMap()
 
 class Circle {
   constructor(radius) {
-    // (***)
-    privateProps.set(this, {
-      radius,
-      move: () => {
-        console.log('move', this)
-      },
-    })
+    _radius: _radius.set(this, radius) // (***)
   }
 
-  log() {
-    privateProps.get(this).move() // (***)
-    console.log(privateProps.get(this).radius) // (***)
+  getRadius() {
+    return _radius.get(this) // (***) earlier, we use Object.defineProperty() > but we should not use that we > since it pollutes our code
   }
 }
 
 const circle = new Circle(10)
-console.log(circle)
 
-circle.log()
+// (***)
+console.log(circle.getRadius())
